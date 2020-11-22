@@ -35,6 +35,9 @@ public class Usuario {
 	@NotNull
 	@PastOrPresent
 	private Instant instanteDoCadastro;
+	
+	@Deprecated
+	public Usuario() {}
 
 	public Usuario(String login, String password) {
 		this.login = login;
