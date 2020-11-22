@@ -1,36 +1,33 @@
-package br.com.mercadolivre.domain.usuario.controller;
+package br.com.mercadolivre.domain.categoria.controller;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.mercadolivre.domain.usuario.dto.NovoUsuarioRequest;
+import br.com.mercadolivre.domain.categoria.dto.NovaCategoriaRequest;
 
 @RestController
-@RequestMapping("/usuarios")
-public class UsuarioController {
+@RequestMapping("/categorias")
+public class CategoriaController {
 	
 	private EntityManager entityManager;
 	
-	private PasswordEncoder passwordEncoder;
-
-	public UsuarioController(EntityManager entityManager, PasswordEncoder passwordEncoder) {
+	public CategoriaController(EntityManager entityManager) {
 		this.entityManager = entityManager;
-		this.passwordEncoder = passwordEncoder;
 	}
 
-	//1
+	// 1
 	@PostMapping
 	@Transactional
-	public ResponseEntity<Void> salvaUsuario(@Valid @RequestBody NovoUsuarioRequest request){
-		entityManager.persist(request.toModel(passwordEncoder));
+	public ResponseEntity<Void> salvaCategoria(@Valid @RequestBody NovaCategoriaRequest request) {
+		entityManager.persist(request.toModel(entityManager));
 		return ResponseEntity.ok().build();
 	}
+
 }

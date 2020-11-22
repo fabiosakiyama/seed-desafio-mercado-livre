@@ -22,6 +22,7 @@ public class NovoUsuarioRequest {
 	@Size(min = 6)
 	private String password;
 	
+	//1
 	public Usuario toModel(PasswordEncoder passwordEncoder) {
 		return new Usuario(this.login, passwordEncoder.encode(this.password));
 	}
