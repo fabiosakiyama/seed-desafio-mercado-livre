@@ -7,3 +7,9 @@ spring:
     jpa:
         hibernate:
             ddl-auto: update
+            
+keycloak:
+    auth-server-url: http://localhost:8180/auth
+    realm: SpringBootKeycloak
+    resource: mercado-livre-app
+    public-client: true
